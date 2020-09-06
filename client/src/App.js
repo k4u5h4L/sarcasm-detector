@@ -13,7 +13,7 @@ const App = () => {
           headline: query,
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setResult(response.data.message);
         })
         .catch((error) => {
@@ -25,8 +25,12 @@ const App = () => {
   }, [submit]);
 
   const handleChange = (e) => {
-    console.log(`query: ${query}`);
+    // console.log(`query: ${query}`);
     setQuery(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    setSubmit(!submit);
   };
 
   return (
@@ -57,6 +61,7 @@ const App = () => {
           <div className="wrap-input100">
             <span className="label-input100">Result</span>
             <input
+              style={{ color: result ? "red" : "green" }}
               className="input100"
               type="text"
               name="web"
@@ -75,7 +80,7 @@ const App = () => {
               <button
                 type="button"
                 className="contact100-form-btn"
-                onClick={() => setSubmit(!submit)}
+                onClick={() => handleSubmit()}
               >
                 Submit
               </button>
@@ -85,7 +90,7 @@ const App = () => {
       </div>
 
       <span className="contact100-more">
-        Made using React, Django, Tensorflow-Keras
+        Powered by React, Django and Tensorflow-Keras
       </span>
     </div>
   );
